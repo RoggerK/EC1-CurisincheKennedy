@@ -16,31 +16,32 @@ public class MallaCuricularServiceImpl implements MallaCuricularService {
 	@Override
 	public void guardar(MallaCuricular mallaCuricular) {
 		// TODO Auto-generated method stub
-
+		repository.save(mallaCuricular);
 	}
 
 	@Override
 	public void editar(Long id, MallaCuricular mallaCuricular) {
 		// TODO Auto-generated method stub
-
+		mallaCuricular.setIdMalla(id);
+		repository.saveAndFlush(mallaCuricular);
 	}
 
 	@Override
 	public void eliminar(Long id) {
 		// TODO Auto-generated method stub
-
+		repository.deleteById(id);
 	}
 
 	@Override
 	public List<MallaCuricular> listar() {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.findAll();
 	}
 
 	@Override
 	public MallaCuricular porId(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.findById(id).orElse(null);
 	}
 
 }

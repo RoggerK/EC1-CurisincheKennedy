@@ -16,31 +16,32 @@ public class ProfesorServiceImpl implements ProfesorService {
 	@Override
 	public void guardar(Profesor profesor) {
 		// TODO Auto-generated method stub
-
+		repository.save(profesor);
 	}
 
 	@Override
 	public void editar(Long id, Profesor profesor) {
 		// TODO Auto-generated method stub
-
+		profesor.setIdProfesor(id);
+		repository.save(profesor);
 	}
 
 	@Override
 	public void eliminar(Long id) {
 		// TODO Auto-generated method stub
-
+		repository.deleteById(id);
 	}
 
 	@Override
 	public List<Profesor> listar() {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.findAll();
 	}
 
 	@Override
 	public Profesor porId(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.findById(id).orElse(null);
 	}
 
 }

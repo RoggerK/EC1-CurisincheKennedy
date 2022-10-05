@@ -13,4 +13,23 @@ public class Universidad {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUniversidad;
 	private String universidad;
+
+	public Universidad() {
+	}
+
+	public Long getIdUniversidad() {
+		return idUniversidad;
+	}
+
+	public void setIdUniversidad(Long idUniversidad) {
+		this.idUniversidad = idUniversidad;
+	}
+
+	public String getUniversidad() {
+		return universidad;
+	}
+
+	public void setUniversidad(String universidad) {
+		this.universidad = universidad;
+	}
 }

@@ -16,31 +16,32 @@ public class UniversidadServiceImpl implements UniversidadService {
 	@Override
 	public void guardar(Universidad universidad) {
 		// TODO Auto-generated method stub
-
+		repository.save(universidad);
 	}
 
 	@Override
 	public void editar(Long id, Universidad universidad) {
 		// TODO Auto-generated method stub
-
+		universidad.setIdUniversidad(id);
+		repository.save(universidad);
 	}
 
 	@Override
 	public void eliminar(Long id) {
 		// TODO Auto-generated method stub
-
+		repository.deleteById(id);
 	}
 
 	@Override
 	public List<Universidad> listar() {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.findAll();
 	}
 
 	@Override
 	public Universidad porId(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.findById(id).orElse(null);
 	}
 
 }

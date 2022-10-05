@@ -13,4 +13,23 @@ public class Profesor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idProfesor;
 	private String profesor;
+
+	public Profesor() {
+	}
+
+	public Long getIdProfesor() {
+		return idProfesor;
+	}
+
+	public void setIdProfesor(Long idProfesor) {
+		this.idProfesor = idProfesor;
+	}
+
+	public String getProfesor() {
+		return profesor;
+	}
+
+	public void setProfesor(String profesor) {
+		this.profesor = profesor;
+	}
 }

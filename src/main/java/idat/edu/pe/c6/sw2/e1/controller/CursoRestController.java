@@ -27,24 +27,39 @@ public class CursoRestController {
 	
 	@RequestMapping(path = "/listar/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Curso> porId(@PathVariable Long id) {
-		return new ResponseEntity<Curso>(service.porId(id), HttpStatus.OK);
+		Curso curso = service.porId(id);
+		if (curso != null) {
+			return new ResponseEntity<Curso>(curso, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Curso>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@RequestMapping(path = "/guardar", method = RequestMethod.POST)
-	public ResponseEntity<Void> gurdar(@RequestBody Curso curso) {
+	public ResponseEntity<Void> guardar(@RequestBody Curso curso) {
 		service.guardar(curso);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(path = "/actualizar/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> actualizar(@PathVariable Long id, @RequestBody Curso curso) {
-		service.editar(id, curso);
-		return new ResponseEntity<Void>(HttpStatus.OK);
+		Curso nuevocur = service.porId(id);
+		if (nuevocur != null) {
+			service.editar(id, curso);
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@RequestMapping(path = "/eliminar/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-		service.eliminar(id);
-		return new ResponseEntity<Void>(HttpStatus.OK);
+		Curso curso = service.porId(id);
+		if(curso != null) {
+			service.eliminar(id);
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		}
 	}
 }

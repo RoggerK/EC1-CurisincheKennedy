@@ -16,31 +16,32 @@ public class CursoServiceImpl implements CursoService {
 	@Override
 	public void guardar(Curso curso) {
 		// TODO Auto-generated method stub
-
+		repository.save(curso);
 	}
 
 	@Override
 	public void editar(Long id, Curso curso) {
 		// TODO Auto-generated method stub
-
+		curso.setIdCurso(id);
+		repository.saveAndFlush(curso);
 	}
 
 	@Override
 	public void eliminar(Long id) {
 		// TODO Auto-generated method stub
-
+		repository.deleteById(id);
 	}
 
 	@Override
 	public List<Curso> listar() {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.findAll();
 	}
 
 	@Override
 	public Curso porId(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return repository.findById(id).orElse(null);
 	}
 
 }
